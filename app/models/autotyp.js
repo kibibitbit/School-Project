@@ -13,7 +13,7 @@ class Autotyp{
             const Autoypen = [];
 
             rows.forEach(row => {
-                const autotyp = new Autoyp(
+                const autotyp = new Autotyp(
                     row.ID,
                     row.Bezeichnung
                 );
