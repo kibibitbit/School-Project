@@ -1,0 +1,26 @@
+{
+  "name": "wettbewerb-website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/bktmpdr/itas/2021_ait/ait22/poa/glasreiniger/wettbewerb-website.git"
+  },
+  "author": "David Usov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/bktmpdr/itas/2021_ait/ait22/poa/glasreiniger/wettbewerb-website/issues"
+  },
+  "homepage": "https://gitlab.com/bktmpdr/itas/2021_ait/ait22/poa/glasreiniger/wettbewerb-website#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mysql2": "^3.3.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
