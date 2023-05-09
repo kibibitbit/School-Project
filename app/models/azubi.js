@@ -1,32 +1,29 @@
 const db = require('../Controller/db');
 
     class Azubi {
-        constructor(ID,Vorname,Nachname,Mail,Passwort,Username) {
+        constructor(ID,Vorname,Nachname,Klasse,Passwort) {
             this.ID = ID;
             this.Vorname = Vorname;
             this.Nachname = Nachname;
-            this.Mail = Mail;
+            this.Klasse = Klasse;
             this.Passwort = Passwort;
-            this.Username = Username;
         }
-        static async getalluser(){
+        static async getallAzubi(){
             try{
-                const rows = await db.query(`SELECT * FROM user`);
-                const Users = [];
+                const rows = await db.query(`SELECT * FROM Azubi`);
+                const Azubis = [];
 
                 rows.forEach(row => {
-                    const user = new users(
-                        row.FilmID,
-                        row.FSK,
-                        row.Description,
-                        row.Titel,
-                        row.Img,
-                        row.Serienlink,
-                        row.Statistik
+                    const azubi = new Azubi(
+                        row.ID,
+                        row.Vorname,
+                        row.Nachname,
+                        row.Klasse,
+                        row.Passwort
                     );
-                    Users.push(user);
+                    Azubis.push(azubi);
                 });
-                return Users;
+                return Azubis;
             } catch(error) {
                 console.log('Fehler bei dem Abrufen der Daten: ', error);
             }
@@ -34,3 +31,5 @@ const db = require('../Controller/db');
                 console.error(error);
             }
     }
+
+module.exports = Azubi;

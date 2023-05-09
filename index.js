@@ -16,13 +16,11 @@ app.use(bodyParser.json());
 app.use(PublicRoutes);
 
 const server = app.listen(3000,(req,res)=>{
-    controller.index()
-        .then(()=>{
-            console.log(`Server Listening on http://localhost:3000`) //Hier wird die URL ausgegeben auf dem der Server gehostet wird
-        })
-        .catch((Error)=>{
-            console.log(Error);// wenn der .then befehl nicht funktioniert wird er gecatched und ein error ausgegeben
-            console.log('Fehler bei dem starten der Startseite');
-        });
+    try {
+        console.log(`Server Listening on http://localhost:3000`)
+    }catch (error){
+        console.error(error)
+        console.log('Fehler beim Starten der seite')
+    }
 });
 module.exports = server;

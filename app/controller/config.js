@@ -4,7 +4,7 @@ const config = {
         host:'localhost',
         user:'root',
         password:'',
-        database:'mywebsite',
+        database:'rennen',
     }
 }
 module.exports = config;
