@@ -4,7 +4,6 @@ const router = express.Router();
 const controller = require('../Controller/maincontroller');
 
 router.get('/',controller.index);
-router.get('/login',controller.login)
-router.get('*',controller.error_page)
+router.get('*',controller.error_page);
 
 module.exports = router;

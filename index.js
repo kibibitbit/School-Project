@@ -3,15 +3,13 @@ const express = require('express');
 const app = express();
 const PublicRoutes = require('./app/routes/PublicRoutes');
 const path = require("path");
-const controller = require('./app/Controller/maincontroller');
 const bodyParser = require("body-parser");
 
 app.set('views', './views');
 app.set('view engine','ejs');
-app.use( express.static(path.join(__dirname,'app')));
 app.use( express.static(path.join(__dirname,'views')));
 app.use( express.static(path.join(__dirname,'public')));
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(PublicRoutes);
 

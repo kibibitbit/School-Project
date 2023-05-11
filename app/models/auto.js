@@ -1,7 +1,7 @@
 "use strict"
 const db = require('../controller/db');
 
-class auto{
+class Auto{
     constructor(ID,Name,TeamID,Typ) {
         this.ID = ID;
         this.Name = Name;
@@ -29,4 +29,4 @@ class auto{
     }
 }
 
-module.exports = auto;
+module.exports = Auto;

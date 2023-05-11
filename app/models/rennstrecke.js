@@ -1,23 +1,23 @@
 "use strict"
 const db = require('../controller/db');
 
-class Rennstecke{
+class Rennstrecke{
     constructor(ID,Name,Laenge) {
         this.ID = ID;
         this.Name = Name;
-        this.laenge = laenge;
+        this.Laenge = Laenge;
     }
 
     static async getallautos(){
         try {
-            const rows = await db.query('SELECT * FROM rennstecke');
+            const rows = await db.query('SELECT * FROM rennstrecke');
             const Rennstrecken = [];
 
             rows.forEach(row => {
                 const rennstrecke = new Rennstrecke(
                     row.ID,
                     row.Name,
-                    row.laenge
+                    row.Laenge
                 );
                 Rennstrecken.push(rennstrecke);
             });
@@ -28,4 +28,4 @@ class Rennstecke{
     }
 }
 
-module.exports = Rennstecke
+module.exports = Rennstrecke

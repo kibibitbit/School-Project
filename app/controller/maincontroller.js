@@ -1,23 +1,17 @@
 "use strict"
-const Auto = require('../models/auto');
-const bodyParser = require("body-parser");
+const rennstrecke = require('../models/rennstrecke');
 const path = require("path");
-const express = require('express');
-const app = express();
+const PulbicRoutes = require('../routes/PublicRoutes');
+const PrivateRoutes = require('../routes/PrivateRoutes');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.set('views', './views');
-app.set('view engine','ejs');
-app.use( express.static(path.join(__dirname,'app')));
-app.use( express.static(path.join(__dirname,'public')));
 async function index(req,res){
+    const rennstrecken = await rennstrecke.getallautos();
+    console.log(rennstrecken)
     try {
-        await res.render('index');
+        res.render('index',{rennstrecken});
     } catch (error) {
         console.error(error);
         res.render('Error');
-        res.status(500).send('Fehler beim Abrufen der Filme');
     }
 }
 async function login(req,res){
@@ -31,13 +25,6 @@ async function login(req,res){
 }
 async function error_page(req,res){
     res.render('Error');
-}
-exports.autos = async (req,res)=>{
-    try{
-    }catch (error){
-        console.error(error);
-        console.log('Internal Error in index');
-    }
 }
 
 module.exports = {index,login,error_page}
