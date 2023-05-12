@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/bktmpdr/itas/2021_ait/ait22/poa/glasreiniger/wettbewerb-website.git"
   },
-  "author": "David Usov <usovd660@sus-am-bktm.de>",
+  "author": "David Usov <usovd660@sus-am-bktm.de>, SillySoon <kuehnasse100@sus-am-bktm.de>, AniSoon<maltera894@sus-am-bktm.de>",
   "license": "ISC",
   "bugs": {
     "url": "https://gitlab.com/bktmpdr/itas/2021_ait/ait22/poa/glasreiniger/wettbewerb-website/issues"
@@ -19,8 +20,11 @@
     "body-parser": "^1.20.2",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "mysql2": "^3.3.0"
+    "mysql2": "^3.3.0",
+    "nodemon": "^2.0.22"
   },
-  "devDependencies": {},
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "eslint": "^8.40.0"
+  }
 }

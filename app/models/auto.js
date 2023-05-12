@@ -14,7 +14,7 @@ class Auto{
             const Autos = [];
 
             rows.forEach(row => {
-                const autos = new auto(
+                const autos = new Auto(
                     row.ID,
                     row.Name,
                     row.TeamID,
