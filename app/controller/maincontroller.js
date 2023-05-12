@@ -1,8 +1,8 @@
 "use strict"
 const rennstrecke = require('../models/rennstrecke');
-const path = require("path");
-const PulbicRoutes = require('../routes/PublicRoutes');
-const PrivateRoutes = require('../routes/PrivateRoutes');
+// const path = require("path");
+// const PulbicRoutes = require('../routes/PublicRoutes');
+// const PrivateRoutes = require('../routes/PrivateRoutes');
 
 async function index(req,res){
     const rennstrecken = await rennstrecke.getallautos();

@@ -8,8 +8,8 @@ class Fahrzeit {
         this.Nachname = Fahrzeit;
         this.Klasse = Timespec;
     }
-    static async getallAzubi(){
-        try{
+    static async getallAzubi() {
+        try {
             const rows = await db.query(`SELECT * FROM fahrzeit`);
             const Fahrzeiten = [];
 
@@ -24,11 +24,9 @@ class Fahrzeit {
                 Fahrzeiten.push(fahrzeit);
             });
             return Fahrzeiten;
-        } catch(error) {
+        } catch (error) {
             console.log('Fehler bei dem Abrufen der Daten: ', error);
         }
-    }catch(error){
-        console.error(error);
     }
 }
 
