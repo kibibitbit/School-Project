@@ -2,13 +2,14 @@
 const db = require('../Controller/db');
 
 class Fahrzeit {
-    constructor(ID,AutoID,RennstreckeID,Fahrzeit,Timespec) {
+    constructor(ID,AutoID,RennstreckeID,Fahrzeit,Timestamp) {
         this.ID = ID;
-        this.Vorname = RennstreckeID;
-        this.Nachname = Fahrzeit;
-        this.Klasse = Timespec;
+        this.AutoID = AutoID;
+        this.RennstreckeID = RennstreckeID;
+        this.Fahrzeit = Fahrzeit;
+        this.Timestamp = Timestamp;
     }
-    static async getallAzubi() {
+    static async getallFahrzeit() {
         try {
             const rows = await db.query(`SELECT * FROM fahrzeit`);
             const Fahrzeiten = [];
@@ -16,10 +17,10 @@ class Fahrzeit {
             rows.forEach(row => {
                 const fahrzeit = new Fahrzeit(
                     row.ID,
-                    row.Vorname,
-                    row.Nachname,
-                    row.Klasse,
-                    row.Passwort
+                    row.AutoID,
+                    row.RennstreckeID,
+                    row.Fahrzeit,
+                    row.Timestamp
                 );
                 Fahrzeiten.push(fahrzeit);
             });

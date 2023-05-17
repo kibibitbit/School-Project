@@ -19,8 +19,22 @@
     <div>
 
         <ul class="nav-List">   <!-- Create List -->
-            <a href="/Manage" class="nav-link"> <!-- Links -->
-                <li  class="nav-item">Manage</li><!-- Create new Items -->
+            <div class="dropdown">
+                <button class="dropbtn">Manage</button>
+                <div class="dropdown-content">
+                    <a href="/automanage" class="nav-link"> <!-- Links -->
+                        <li  class="nav-item">Auto</li><!-- Create new Items -->
+                    </a>
+                    <a href="/streckenmanage" class="nav-link"> <!-- Links -->
+                        <li  class="nav-item">Strecken</li><!-- Create new Items -->
+                    </a>
+                    <a href="/zeitmanage" class="nav-link"> <!-- Links -->
+                        <li  class="nav-item">Zeit</li><!-- Create new Items -->
+                    </a>
+                </div>
+            </div>
+            <a href="/allModies" class="nav-link">
+                <li class="nav-item">Races</li>
             </a>
             <a href="/register" class="nav-link"> <!-- Links -->
                 <li class="nav-item">SignUp</li><!-- Create new Items -->
@@ -29,8 +43,6 @@
                 <li id="nav-login" class="nav-item">Login</li>
             </a>
             <!--
-            TODO: Maybe switch li with a in the ul.
-
             <li id="nav-login" class="nav-item">
                 <a href="/login">Login</a>
             </li>
@@ -43,8 +55,31 @@
         <span class="bar"></span>
     </label>
 </nav>
-<% rennstrecken.forEach(function (strecke){%>
-        <h1> <%= strecke.ID%> <%= strecke.Name%> <%= strecke.Laenge%></h1>
-    <%});%>
+<div id="streckenbeispiel">
+    <div>
+        <h1 id="streckenname">Strecke1 :</h1>
+        <img id="streckenimg" src="https://media.istockphoto.com/id/165965397/de/vektor/motor-race.jpg?s=612x612&w=0&k=20&c=LXyW272VrR28uOf0LV3G6BMKWaBdoXBmxw9RuMWVCD8=">
+    </div>
+    <div id="tabellestreckenzeit">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fahrzeit</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+            <%fahrzeit.forEach(function(fahrzeiten){%>
+                <tr>
+                    <td><%= fahrzeiten.ID%></td>
+                    <td><%= fahrzeiten.Fahrzeit%></td>
+                    <td><%= fahrzeiten.Timestamp.toString().replace('GMT+0200 (Central European Summer Time)','')%></td>
+                </tr>
+            <%})%>
+            </tbody>
+        </table>
+</div>
+</div>
 </body>
 </html>

@@ -94,12 +94,12 @@ a{
     width: 600px;
     height: 350px;
 }
-.message-container{
+.message-container-successfully{
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 0 0 15px 15px ;
-    background-color: #b23838;
+    background-color: mediumspringgreen;
     color: white;
     margin-top: 2%;
     font-size: 20px;

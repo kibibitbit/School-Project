@@ -84,7 +84,8 @@ a{
     display: block;
 }
 .container-container-canvas .register{
-    text-align: center;
+    display: flex;
+    justify-content: center;
     border-bottom: inset 1px black;
 }
 .container-container-canvas{
@@ -92,7 +93,7 @@ a{
     background-color: #ffffff;
     box-shadow: 0 0 5px 5px #7c7e83;
     width: 600px;
-    height: 530px;
+    height: 450px;
 }
 .massage-container{
     display: flex;

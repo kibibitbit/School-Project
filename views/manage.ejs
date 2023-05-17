@@ -9,6 +9,23 @@
     <title>Manage</title>
 </head>
 <body>
+<div class="manage-container">
+    <div>
+        <a href="/automanage" class="auto-manage">
+            <h1>Auto Verwaltung</h1>
+        </a>
+    </div>
+    <div>
+        <a href="/streckenmanage" class="auto-manage">
+            <h1>Strecken Verwaltung</h1>
+        </a>
+    </div>
+    <div>
+        <a href="/zeitmanage" class="auto-manage">
+            <h1>Fahrzeit Verwaltung</h1>
+        </a>
+    </div>
+</div>
 <button id="home-button" type="submit"><a href="/">Home</a></button>
 <section>
     <div id="form-container">
@@ -28,7 +45,7 @@
             </div>
             <div class="block">
                 <label for="Laenge">Laenge:</label>
-                <input type="date" name="Laenge" />
+                <input type="time" name="Laenge" />
             </div>
             <div class="block">
                 <button class="button-grid"  type="submit">Add</button>
@@ -47,7 +64,7 @@
             </div>
             <div class="block">
                 <label for="Laenge">Laenge:</label>
-                <input type="date" name="Laenge" required/>
+                <input type="time" name="Laenge" required/>
             </div>
             <div class="block">
                 <button class="button-grid" type="submit">Update</button>
