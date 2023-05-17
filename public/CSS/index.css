@@ -196,6 +196,7 @@ table{
     height: 100%;
     padding-inline: 15px;
     font-family: 'Lilita One', cursive;
+    background-color: var(--nav);
     color: var(--nav-color);
     font-size: 28px;
     border: none;
@@ -224,7 +225,7 @@ table{
     display: block;
 }
 .dropdown:hover .dropbtn {
-    transition: 0.5s linear;
+    transition: 0.2s linear;
     background-color: var(--nav-login-background);
 }
 
