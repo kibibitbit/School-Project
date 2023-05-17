@@ -30,6 +30,13 @@ class Azubi {
             console.log('Fehler bei dem Abrufen der Daten: ', error);
         }
     }
+    static async getpassword(Username){
+        try {
+            await db.query('SELECT Passwort FROM azubi WHERE Username = ?',[Username])
+        }catch(error){
+            console.log(error)
+        }
+    }
     static async CreateNewUser(Vorname,Nachname,Klasse,Passwort,Username){
         try{
             await db.query('INSERT INTO azubi (Vorname,Nachname,Klasse,Passwort,Username) VALUES (?,?,?,?,?)', [Vorname,Nachname,Klasse,Passwort,Username]);

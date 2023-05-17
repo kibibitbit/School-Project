@@ -2,7 +2,7 @@
 const rennstrecke = require('../models/rennstrecke');
 const Fahrzeit = require('../models/fahrzeit');
 const azubi = require('../models/azubi');
-const bcrypt = require('bcrypt');
+const encrytion = require('./encryption');
 // const path = require("path");
 // const PulbicRoutes = require('../routes/PublicRoutes');
 // const PrivateRoutes = require('../routes/PrivateRoutes');
@@ -56,7 +56,7 @@ async function createUser(req,res){
             });
         }
         else{
-            let hashedpassword = await bcrypt.hash(Passwort,10)
+            const hashedpassword = await encrytion.hashpassword();
             await azubi.CreateNewUser('','','',hashedpassword,Username);
             return res.render('login',{
                 message:'Successfully registered'
