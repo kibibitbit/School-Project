@@ -201,11 +201,21 @@ async function createUser(req,res){
         console.log(error)
     }
 }
-async function search(req,res){
+async function searchauto(req,res){
+    const {search} = req.body;
     try {
-        const {ID}= req.body
-        await auto.getautobyid();
+        const Auto = await auto.getautobyid(search);
+        res.render('auto',{Auto});
     }catch (error){
+        console.log(error)
+    }
+}
+async function searchazubi(req,res){
+    const {search} = req.body;
+    try {
+        const Azubi = await azubi.getallAzubiById(search);
+        res.render('Azubi',{Azubi});
+    }catch(error){
         console.log(error)
     }
 }
@@ -231,5 +241,6 @@ module.exports =
         deletezeit,
         updatezeit,
         createzeit,
-        search
+        searchauto,
+        searchazubi
     }

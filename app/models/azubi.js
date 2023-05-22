@@ -30,6 +30,27 @@ class Azubi {
             console.log('Fehler bei dem Abrufen der Daten: ', error);
         }
     }
+    static async getallAzubiById(ID) {
+        try {
+            const rows = await db.query(`SELECT * FROM Azubi WHERE ID = ?`,[ID]);
+            const Azubis = [];
+
+            rows.forEach(row => {
+                const azubi = new Azubi(
+                    row.ID,
+                    row.Username,
+                    row.Vorname,
+                    row.Nachname,
+                    row.Klasse,
+                    row.Passwort
+                );
+                Azubis.push(azubi);
+            });
+            return Azubis;
+        } catch (error) {
+            console.log('Fehler bei dem Abrufen der Daten: ', error);
+        }
+    }
     static async getpassword(Username){
         try {
             await db.query('SELECT Passwort FROM azubi WHERE Username = ?',[Username])

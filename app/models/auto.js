@@ -36,6 +36,25 @@ class Auto{
             console.log(error);
         }
     }
+    static async getautobyid(ID){
+        try {
+            const rows = await db.query('SELECT * FROM auto WHERE ID = ?',[ID]);
+            const Autos = [];
+
+            rows.forEach(row => {
+                const autos = new Auto(
+                    row.ID,
+                    row.Name,
+                    row.TeamID,
+                    row.Typ
+                );
+                Autos.push(autos);
+            });
+            return Autos;
+        } catch(error) {
+            console.log('Fehler bei dem Abrufen der Daten: ', error);
+        }
+    }
     static async UpdateAuto(Name,TeamID,Typ,ID){
         try {
             await db.query('UPDATE auto SET Name=?, TeamID=?, Typ=? WHERE ID = ?',[Name,TeamID,Typ,ID]);
@@ -53,14 +72,7 @@ class Auto{
             console.log('Das Auto konnte nicht gelöscht werden');
         }
     }
-    static async getautobyid(ID){
-        try{
-            await db.query('SELECT * FROM auto WHERE ID = ?',[ID]);
-            console.log('Es wurde nach dem auto mir der ID '+[ID]+' gesucht')
-        }catch (error){
-            console.log(error)
-        }
-    }
+
 }
 
 module.exports = Auto;
