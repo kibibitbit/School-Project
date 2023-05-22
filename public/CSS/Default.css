@@ -187,6 +187,24 @@ section{
         width: 100%;
     }
 }
+#searchbarbox{
+    color: black;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#searchbarbox img{
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+#searchbar{
+    border-radius: 10px;
+    height: 30px;
+    margin-inline: 10px;
+    border: 1px solid black;
+}
 @media screen and (max-width: 832px)  {
 
     .race-box{

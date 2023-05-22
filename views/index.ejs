@@ -17,7 +17,6 @@
         <h1>Pi Games</h1> <!-- overwritten -->
     </div>
     <div>
-
         <ul class="nav-List">   <!-- Create List -->
             <div class="dropdown">
                 <button class="dropbtn">Manage</button>
@@ -74,7 +73,7 @@
                 <tr>
                     <td><%= fahrzeiten.ID%></td>
                     <td><%= fahrzeiten.Fahrzeit%></td>
-                    <td><%= fahrzeiten.Timestamp.toString().replace('GMT+0200 (Central European Summer Time)','')%></td>
+                    <td><%= fahrzeiten.Timestamp.toLocaleString().replace('GMT+0200 (Central European Summer Time)','')%></td>
                 </tr>
             <%})%>
             </tbody>

@@ -29,9 +29,9 @@ class Fahrzeit {
             console.log('Fehler bei dem Abrufen der Daten: ', error);
         }
     }
-    static async CreateNewZeit(RennstreckeID,Fahrzeit,Timestamp){
+    static async CreateNewZeit(AutoID,RennstreckeID,Fahrzeit,Timestamp){
         try{
-            await db.query('INSERT INTO fahrzeit (RennstreckeID,Fahrzeit,Timestamp) VALUES (?,?,?)', [RennstreckeID,Fahrzeit,Timestamp]);
+            await db.query('INSERT INTO fahrzeit (AutoID,RennstreckeID,Fahrzeit,Timestamp) VALUES (?,?,?,?)', [AutoID,RennstreckeID,Fahrzeit,Timestamp]);
             console.log('Die Fahrzeit wurde Erfolgreich Erstellt');
         }catch(error){
             console.log('Fehler beim Createn der Fahrzeit');

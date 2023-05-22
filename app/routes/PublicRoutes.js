@@ -19,6 +19,7 @@ router.post('/updateauto',controller.updateauto);
 router.post('/createstrecke',controller.createstrecke);
 router.post('/deletestrecke',controller.deletestrecke);
 router.post('/updatestrecke',controller.updatestrecke);
+router.post('/search',controller.search);
 router.get('/',controller.index);
 router.get('/*/',controller.races);
 router.get('*',controller.error_page);

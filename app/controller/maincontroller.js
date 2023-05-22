@@ -29,45 +29,6 @@ async function register (req,res){
         console.log(error)
     }
 }
-async function login (req,res){
-    try {
-        const message = req.query.message|| '';
-        res.render('login',{
-            message:message
-        });
-    }catch (error){
-        console.log(error)
-    }
-}
-async function error_page(req,res){
-    res.render('Error');
-}
-async function createUser(req,res){
-    const {Username,Passwort,passwordconfirm} = req.body;
-    try {
-        const UserExists = await azubi.Usernamecheck(Username);
-        if (UserExists) {
-            return res.render('register', {
-                message: 'Username already taken',
-            });
-        }
-        if(Passwort !== passwordconfirm){
-            return res.render('register',{
-                message: 'Password not match'
-            });
-        }
-        else{
-            const hashedpassword = await encrytion.hashpassword();
-            await azubi.CreateNewUser('','','',hashedpassword,Username);
-            return res.render('login',{
-                message:'Successfully registered'
-            });
-        }
-
-    }catch (error){
-        console.log(error)
-    }
-}
 async function loginuser(req,res){
     try {
     }catch (error){
@@ -184,8 +145,8 @@ async function updatezeit(req,res) {
 }
 async function createzeit(req,res){
     try {
-        const {RennstreckeID,fahrzeit,Timestamp} = req.body;
-        await Fahrzeit.CreateNewZeit(RennstreckeID,fahrzeit,Timestamp);
+        const {AutoID,RennstreckeID,fahrzeit,Timestamp} = req.body;
+        await Fahrzeit.CreateNewZeit(AutoID,RennstreckeID,fahrzeit,Timestamp);
         res.redirect('/');
     }catch (error){
         console.error(error)
@@ -199,6 +160,53 @@ async function deletezeit(req,res){
     } catch (error) {
         console.error(error);
         console.log(`Error deleting ${ID}`);
+    }
+}
+async function login (req,res){
+    try {
+        const message = req.query.message|| '';
+        res.render('login',{
+            message:message
+        });
+    }catch (error){
+        console.log(error)
+    }
+}
+async function error_page(req,res){
+    res.render('Error');
+}
+async function createUser(req,res){
+    const {Username,Passwort,passwordconfirm} = req.body;
+    try {
+        const UserExists = await azubi.Usernamecheck(Username);
+        if (UserExists) {
+            return res.render('register', {
+                message: 'Username already taken',
+            });
+        }
+        if(Passwort !== passwordconfirm){
+            return res.render('register',{
+                message: 'Password not match'
+            });
+        }
+        else{
+            let hashedpassword = await encrytion.hashpassword();
+            await azubi.CreateNewUser('','','',hashedpassword,Username);
+            return res.render('login',{
+                message:'Successfully registered'
+            });
+        }
+
+    }catch (error){
+        console.log(error)
+    }
+}
+async function search(req,res){
+    try {
+        const {ID}= req.body
+        await auto.getautobyid();
+    }catch (error){
+        console.log(error)
     }
 }
 module.exports =
@@ -222,5 +230,6 @@ module.exports =
         zeitmanage,
         deletezeit,
         updatezeit,
-        createzeit
+        createzeit,
+        search
     }

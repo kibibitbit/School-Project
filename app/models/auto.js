@@ -53,6 +53,14 @@ class Auto{
             console.log('Das Auto konnte nicht gelöscht werden');
         }
     }
+    static async getautobyid(ID){
+        try{
+            await db.query('SELECT * FROM auto WHERE ID = ?',[ID]);
+            console.log('Es wurde nach dem auto mir der ID '+[ID]+' gesucht')
+        }catch (error){
+            console.log(error)
+        }
+    }
 }
 
 module.exports = Auto;

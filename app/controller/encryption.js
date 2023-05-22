@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
-async function hashpassword(req,res,hashedpassword){
+async function hashpassword(req,res){
     const {Passwort} = req.body;
     console.log(Passwort)
-    hashedpassword = await bcrypt.hash(Passwort,10);
+    let hashedpassword = await bcrypt.hash(Passwort,10);
 }
 async function logincheck(req,res){
 
