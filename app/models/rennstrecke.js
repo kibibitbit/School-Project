@@ -35,9 +35,9 @@ class Rennstrecke{
             console.log(error);
         }
     }
-    static async UpdateStrecke(Name,Laenge){
+    static async UpdateStrecke(Name,Laenge,ID){
         try {
-            await db.query('UPDATE rennstrecke SET Name=?, Laenge=? WHERE ID = ?',[Name,Laenge]);
+            await db.query('UPDATE rennstrecke SET Name=?, Laenge=? WHERE ID = ?',[Name,Laenge,ID]);
             console.log('Die rennstrecke mit dem '+Name+' wurde Erfolgreich erneuert');
         }catch (error){
             console.log('Fehler beim erneuern der rennstrecke');

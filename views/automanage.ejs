@@ -9,27 +9,10 @@
     <title>Manage</title>
 </head>
 <body>
-<div class="manage-container">
-    <div>
-        <a href="/automanage" class="auto-manage">
-            <h1>Auto Verwaltung</h1>
-        </a>
-    </div>
-    <div>
-        <a href="/streckenmanage" class="auto-manage">
-            <h1>Strecken Verwaltung</h1>
-        </a>
-    </div>
-    <div>
-        <a href="/zeitmanage" class="auto-manage">
-            <h1>Fahrzeit Verwaltung</h1>
-        </a>
-    </div>
-</div>
 <button id="home-button" type="submit"><a href="/">Home</a></button>
 <section>
     <div id="form-container">
-        <form action="/delete" method="post">
+        <form action="/deleteauto" method="post">
             <h1 class="form-h1">Delete</h1>
             <div class="block">
                 <label for="ID">ID:</label>
@@ -37,22 +20,26 @@
             </div>
             <button class="button-grid" type="submit">Delete</button>
         </form>
-        <form class="add-grid" action="/create" method="POST">
+        <form class="add-grid" action="/createauto" method="POST">
             <h1 class="form-h1">Create</h1>
             <div class="block">
                 <label for="Name">Name:</label>
                 <input type="text" name="Name" >
             </div>
+    <div class="block">
+        <label for="TeamID">TeamID:</label>
+        <input type="number" name="TeamID" >
+    </div>
             <div class="block">
-                <label for="Laenge">Laenge:</label>
-                <input type="time" name="Laenge" />
+                <label for="Typ">Typ:</label>
+                <input type="number" name="Typ" >
             </div>
             <div class="block">
                 <button class="button-grid"  type="submit">Add</button>
                 <button class="button-grid"  type="reset">Reset</button>
             </div>
         </form>
-        <form action="/update" method="post">
+        <form action="/updateauto" method="post">
             <h1 class="form-h1">Update</h1>
             <div class="block">
                 <label for="ID">ID:</label>
@@ -63,8 +50,12 @@
                 <input type="text" name="Name" required>
             </div>
             <div class="block">
-                <label for="Laenge">Laenge:</label>
-                <input type="time" name="Laenge" required/>
+                <label for="TeamID">TeamID:</label>
+                <input type="number" name="TeamID" >
+            </div>
+            <div class="block">
+                <label for="Typ">Typ:</label>
+                <input type="number" name="Typ" >
             </div>
             <div class="block">
                 <button class="button-grid" type="submit">Update</button>

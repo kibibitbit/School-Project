@@ -2,6 +2,7 @@
 const rennstrecke = require('../models/rennstrecke');
 const Fahrzeit = require('../models/fahrzeit');
 const azubi = require('../models/azubi');
+const auto = require('../models/auto');
 const encrytion = require('./encryption');
 // const path = require("path");
 // const PulbicRoutes = require('../routes/PublicRoutes');
@@ -91,14 +92,14 @@ async function races(req,res){
         console.log(error)
     }
 }
-async function manage(req,res){
+async function streckenmanage(req,res){
     try {
-        res.render('manage')
+        res.render('streckenmanage')
     }catch (error){
         res.render('Error');
     }
 }
-async function del(req,res){
+async function deletestrecke(req,res){
     try {
         const {ID} = req.body;
         await rennstrecke.DeleteStrecke(ID);
@@ -108,17 +109,17 @@ async function del(req,res){
         console.log(`Error deleting ${ID}`);
     }
 }
-async function update(req,res) {
+async function updatestrecke(req,res) {
     try {
-        const {Name,Laenge} = req.body;
-        await rennstrecke.UpdateStrecke(Name,Laenge);
+        const {Name,Laenge,ID} = req.body;
+        await rennstrecke.UpdateStrecke(Name,Laenge,ID);
         res.redirect('/');
     } catch (error) {
         console.error(error);
         console.log(`Error Updating the rennstrecke ${Name}`);
     }
 }
-async function create(req,res){
+async function createstrecke(req,res){
     try {
         const {Name,Laenge} = req.body;
         await rennstrecke.CreateNewStrecke(Name,Laenge)
@@ -127,4 +128,99 @@ async function create(req,res){
         console.error(error)
     }
 }
-module.exports = {index,login,error_page,register,createUser,loginuser,races,allrenstrecken,manage,del,update,create}
+async function automanage(req,res){
+    try {
+        res.render('automanage');
+    }catch (error){
+        console.log(error);
+    }
+}
+async function deleteauto(req,res){
+    try {
+        const {ID} = req.body;
+        await autotyp.DeleteAuto(ID);
+        res.redirect('/');
+    } catch (error) {
+        console.error(error);
+        console.log(`Error deleting ${ID}`);
+    }
+}
+async function updateauto(req,res) {
+    try {
+        const {Name,TeamID,Typ,ID} = req.body;
+        await auto.UpdateAuto(Name,TeamID,Typ,ID);
+        res.redirect('/');
+    } catch (error) {
+        console.error(error);
+        console.log(`Error Updating the car ${Name}`);
+    }
+}
+async function createauto(req,res){
+    try {
+        const {Name,Typ,TeamID} = req.body;
+        await auto.CreateNewAuto(Name,Typ,TeamID);
+        res.redirect('/');
+    }catch (error){
+        console.error(error)
+    }
+}
+
+async function zeitmanage(req,res){
+    try {
+        res.render('zeitmanage');
+    }catch (error){
+
+    }
+}
+async function updatezeit(req,res) {
+    try {
+        const {ID,AutoID,RennstreckeID,fahrzeit,Timestamp} = req.body;
+        await Fahrzeit.UpdateZeit(ID,AutoID,RennstreckeID,fahrzeit,Timestamp);
+        res.redirect('/');
+    } catch (error) {
+        console.error(error);
+        console.log(`Error beim updaten der zeit`);
+    }
+}
+async function createzeit(req,res){
+    try {
+        const {RennstreckeID,fahrzeit,Timestamp} = req.body;
+        await Fahrzeit.CreateNewZeit(RennstreckeID,fahrzeit,Timestamp);
+        res.redirect('/');
+    }catch (error){
+        console.error(error)
+    }
+}
+async function deletezeit(req,res){
+    try {
+        const {ID} = req.body;
+        await Fahrzeit.DeleteZeit(ID);
+        res.redirect('/');
+    } catch (error) {
+        console.error(error);
+        console.log(`Error deleting ${ID}`);
+    }
+}
+module.exports =
+    {
+        index,
+        login,
+        error_page,
+        register,
+        createUser,
+        loginuser,
+        races,
+        allrenstrecken,
+        streckenmanage,
+        deletestrecke,
+        updatestrecke,
+        createstrecke,
+        createauto,
+        deleteauto,
+        updateauto,
+        automanage,
+        zeitmanage,
+        deletezeit,
+        updatezeit,
+        createzeit
+    }
