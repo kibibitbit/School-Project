@@ -10,15 +10,18 @@
     <title>All Races</title>
 </head>
 <body>
-    <%races.forEach(function(race){%>
-        <div class="allraces">
+<div class="container-race">
+    <a id="back" href="/">Home</a>
+    <div class="allraces">
+        <%races.forEach(function(race){%>
             <div class="races-canvas">
                 <div class="races-item-canvas">
                     <h1><%= race.Name%></h1>
                     <a href="<%=race.ID%>">link</a>
                 </div>
             </div>
-        </div>
-    <%})%>
+        <%})%>
+    </div>
+</div>
 </body>
 </html>

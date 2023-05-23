@@ -46,6 +46,7 @@ class Rennstrecke{
     }
     static async DeleteStrecke(ID) {
         try {
+            await db.query('DELETE FROM fahrzeit WHERE RennstreckeID = ?',[ID]);
             await db.query('DELETE FROM rennstrecke WHERE ID= ?',[ID]);
             console.log('Die rennstrecke mit der ID '+ID+' wurde Erfolgreich gelöscht.');
         }catch (error){

@@ -179,20 +179,20 @@ async function loginUser(req,res){
     const {Username, Passwort} = req.body;
     const userexists = await azubi.Usernamecheck(Username);
     const hashedpassword = await azubi.getpassword(Username);
-    const compare = await encrytion.logincheck(Passwort,hashedpassword.toString())
     try {
         if (userexists === false){
             return res.render('login',{
                 message:'Username not found',
             })
         }
-        if (compare === false){
+        const compare = await encrytion.logincheck(Passwort,hashedpassword.toString())
+        if (!compare){
             return res.render('login',{
                 message:'Password not correct',
             })
         }
         else{
-            return res.redirect('index');
+            return res.redirect('/');
         }
     }catch (error){
         console.log(error)
