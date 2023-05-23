@@ -53,7 +53,8 @@ class Azubi {
     }
     static async getpassword(Username){
         try {
-            await db.query('SELECT Passwort FROM azubi WHERE Username = ?',[Username])
+            const Passwort = await db.query('SELECT Passwort FROM azubi WHERE Username = ?',[Username]);
+            return Passwort;
         }catch(error){
             console.log(error)
         }

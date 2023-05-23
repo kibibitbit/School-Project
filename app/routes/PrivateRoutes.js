@@ -4,6 +4,6 @@ const router = express.Router();
 const controller = require('../Controller/maincontroller');
 
 router.post('/register',controller.createUser);
-router.post('/login',controller.loginuser);
+router.post('/login',controller.loginUser);
 
 module.exports = router;

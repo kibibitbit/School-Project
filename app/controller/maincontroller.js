@@ -175,6 +175,29 @@ async function login (req,res){
 async function error_page(req,res){
     res.render('Error');
 }
+async function loginUser(req,res){
+    const {Username, Passwort} = req.body;
+    const userexists = await azubi.Usernamecheck(Username);
+    const hashedpassword = await azubi.getpassword(Username);
+    const compare = await encrytion.logincheck(Passwort,hashedpassword.toString())
+    try {
+        if (userexists === false){
+            return res.render('login',{
+                message:'Username not found',
+            })
+        }
+        if (compare === false){
+            return res.render('login',{
+                message:'Password not correct',
+            })
+        }
+        else{
+            return res.redirect('index');
+        }
+    }catch (error){
+        console.log(error)
+    }
+}
 async function createUser(req,res){
     const {Username,Passwort,passwordconfirm} = req.body;
     try {
@@ -190,7 +213,7 @@ async function createUser(req,res){
             });
         }
         else{
-            let hashedpassword = await encrytion.hashpassword();
+            let hashedpassword = await encrytion.hashpassword(Passwort);
             await azubi.CreateNewUser('','','',hashedpassword,Username);
             return res.render('login',{
                 message:'Successfully registered'
@@ -226,7 +249,7 @@ module.exports =
         error_page,
         register,
         createUser,
-        loginuser,
+        loginUser,
         races,
         allrenstrecken,
         streckenmanage,
