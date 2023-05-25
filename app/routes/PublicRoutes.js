@@ -5,7 +5,7 @@ const controller = require('../Controller/maincontroller');
 
 router.get('/register',controller.register);
 router.get('/login',controller.login);
-router.get('/races',controller.races)
+router.get('/races',controller.races);
 router.get('/allModies',controller.allrenstrecken);
 router.get('/streckenmanage',controller.streckenmanage);
 router.get('/automanage',controller.automanage);
@@ -24,5 +24,6 @@ router.post('/searchazubi',controller.searchazubi);
 router.get('/',controller.index);
 router.get('/*/',controller.races);
 router.get('*',controller.error_page);
+
 
 module.exports = router;
