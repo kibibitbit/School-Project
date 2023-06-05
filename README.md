@@ -1,2 +1,2 @@
 # School-Project
-das ist unsere Website aus der Projektwoche 
+das ist mein Website aus der Projektwoche 
